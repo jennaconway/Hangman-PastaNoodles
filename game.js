@@ -34,14 +34,14 @@ function startGame(){
         console.log(letterArray);
     };
 
+    document.getElementById("wordToGuess").innerHTML=letterArray.join(" ");
     document.getElementById("winCounter").innerHTML=winCounter;
     document.getElementById("lossCounter").innerHTML=lossCounter;
     document.getElementById("numGuesses").innerHTML=guessesLeft;
 
 };
-// CREATE FUNCTION THAT RUNS WHEN GAME STARTS
 
-// CHANGE HTML TO REFLECT ROUND (can use jQuery Instead)
+// CHANGE HTML T REFLECT ROUND (can use jQuery Instead)O
 //FUNCTION TO CHECK LETTERS
 function checkLetters(letter){
     var letterinWord = false;
