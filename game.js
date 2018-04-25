@@ -24,17 +24,20 @@ var guessesLeft = 9;
 -------------------------------*/
 function startGame(){
     word = words[Math.floor(Math.random()*words.length)];
+    letterArray = word.split('');   
+
+    numBlanks = letterArray.length
     console.log(word);
 
     //reset counter values
     guessesLeft = 9;
 
     for (var i = 0; i < word.length; i ++){
-        letterArray.push("_");
+        wordArray.push("_");
         console.log(letterArray);
     };
 
-    document.getElementById("wordToGuess").innerHTML=letterArray.join(" ");
+    document.getElementById("wordToGuess").innerHTML=wordArray.join(" ");
     document.getElementById("winCounter").innerHTML=winCounter;
     document.getElementById("lossCounter").innerHTML=lossCounter;
     document.getElementById("numGuesses").innerHTML=guessesLeft;
@@ -45,14 +48,28 @@ function startGame(){
 //FUNCTION TO CHECK LETTERS
 function checkLetters(letter){
     var letterinWord = false;
-    for (var i = 0; i < word.length; i++){
+    for (var i = 0; i < numBlanks; i++){
         if (word[i]==letter){
-            letterinWord = true;
-            
+            letterinWord = true;  
         };
+    } 
+    if (letterinWord){
+        for(var i = 0; i < numBlanks; i++){
+            if (word[i] == letter){
+                wordArray[i] = letter
+            } 
+           
+        }
     }
+    console.log("word array " + wordArray);
     console.log(letterinWord);
+
+    
 };
+
+
+
+
 //FUNCTION TO CHECK IF ROUNDS COMPLETE
 /*------------------------------
         Main Process
@@ -62,6 +79,8 @@ startGame();
 document.onkeyup=function(event){
     console.log("key pressed");
     var guessLetter = String.fromCharCode(event.keyCode).toLowerCase();
+    console.log("guessed letter " + guessLetter)
     checkLetters(guessLetter);
 };
 // HANDLE KEYCLICKS
+//my code is clean need to keep this up
